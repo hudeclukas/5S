@@ -1,0 +1,8 @@
+opencv-python
+matplotlib
+plotly
+scikit-image
+imageio
+tifffile
+notebook
+jupyter

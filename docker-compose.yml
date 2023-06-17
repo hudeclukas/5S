@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  5S-pcd:
+    image: 5s-pcd
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "6006:6006"
+    volumes:
+      - .:/5S-app
+      - /mnt/f/Datasets/Histology/PCD 2022:/5S-app/data
+    entrypoint: /bin/bash -c "sleep infinity"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu ]
+              device_ids: ['0']
+        limits:
+          memory: 24G
